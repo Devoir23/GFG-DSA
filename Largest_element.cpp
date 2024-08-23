@@ -1,28 +1,19 @@
-// naive solution
-
 #include<iostream>
 using namespace std;
 
-// funtion to get largest element 
-int LargestElement(int arr[], int n){
-    
-    for(int i=0; i<n; i++){
-        bool flag = true;
-        for(int j=0; j<n; j++){
-            if(arr[j]>arr[i]){
-                flag = false;
-                break;
-            }
-        }    
-        if (flag == true) {
-            return arr[i];
+// function to get the index of the largest element
+int LargestElement(int arr[], int n) {
+    int largestIndex = 0;  // Assume the first element is the largest
+    for (int i = 1; i < n; i++) {  // Start from the second element
+        if (arr[i] > arr[largestIndex]) {
+            largestIndex = i;  // Update largestIndex if current element is larger
         }
     }
-    return -1;
+    return largestIndex;
 }
 
-int main(){
-    int arr[] = {50,8,2,10};
-    cout << LargestElement(arr,4);
+int main() {
+    int arr[] = {5, 8, 20, 10};
+    cout << "Index of largest element: " << LargestElement(arr, 4);
     return 0;
 }
