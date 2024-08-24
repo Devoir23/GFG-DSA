@@ -1,9 +1,8 @@
-//  naive solution
-
 #include<iostream>
 using namespace std;
 
-int firstLargestElement(int arr[], int n){
+//  naive solution
+/*int firstLargestElement(int arr[], int n){
     int largestIndex = 0;  // Assume the first element is the largest
     for (int i = 1; i < n; i++) {  // Start from the second element
         if (arr[i] > arr[largestIndex]) {
@@ -23,6 +22,35 @@ int SecondLargestElement(int arr[], int n){
             }
             else if(arr[i]>arr[res]){
                 res = i;
+            }
+        }
+    }
+    return res;
+}*/
+
+
+// effiecient solution
+/* 
+- in the one traverse
+- trace from left to right
+a[i] > a[largest]: res = largest, largest = i
+a[i] == a[kargest]: ignore
+a[i] < a[largest]
+    - res == -1: res =i
+    - a[i]<=a[res]: Ignore
+    - a[i] > a[res]: res=i
+ */
+
+int SecondLargestElement(int arr[], int n){
+    int res= -1, largest=0;
+    for(int i=1; i<n; i++){
+        if(arr[i] > arr[largest]){
+            res = largest;
+            largest = i;
+        }
+        else if(arr[i]!=arr[largest]){
+            if(res==-1 || arr[i] > arr[res]){
+                res=i;
             }
         }
     }
