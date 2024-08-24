@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-//naive method: T->O(n), S-> O(n)
+/*naive method: T->O(n), S-> O(n)
 int remDup(int arr[], int n){
     // new temp array
     int temp[n];
@@ -17,6 +17,20 @@ int remDup(int arr[], int n){
     }
     for(int i=0; i<res;i++){
         arr[i]=temp[i];
+    }
+    return res;
+}
+*/
+
+
+// efficient
+int remDup(int arr[], int n){
+    int res=1;
+    for(int i=1; i<n; i++){
+        if(arr[i]!=arr[res-1]){
+            arr[res] = arr[i];
+            res++;
+        }
     }
     return res;
 }
