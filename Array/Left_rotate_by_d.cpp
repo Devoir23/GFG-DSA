@@ -1,17 +1,24 @@
 #include<iostream>
 using namespace std;
 
-void lRotateOne(int arr[], int n){
-    int temp = arr[0];
-    for(int i=1;i<n;i++){
-        arr[i-1] = arr[i];
-    }
-    arr[n-1] = temp;
-}
+// try to copy first d elemnts into temp
 
 void lRotateD(int arr[], int n, int d){
-    for(int i=0;i<d;i++){
-        lRotateOne(arr,n);
+    int temp[d];
+    for(int i=0; i<d; i++){
+        temp[i] = arr[i];
+        cout<<"temp";
+        cout << arr[i] <<" ";
+    }
+    // cout<<endl;
+    for(int i=d; i<n;i++){
+        arr[i-d] = arr[i];
+        // cout << arr[i] << " ";
+    }
+    // cout<<endl;
+    for(int i=0; i<d; i++){
+        arr[n-d+i] = temp[i];
+        // cout << arr[i] << " ";
     }
 }
 
